@@ -14,15 +14,16 @@ public class BookSuggestionSystemTest{
     
         String actual = suggest.suggestBook();
         
-        String expexted = "Enjoy your reading";
+        String expected = "Enjoy your reading";
         
-        assertEquals(actual,expexted );
+        assertEquals(actual,expected );
     }
     
         
 
     @Test
     public void testThatGetRandomNumberGetsTheNumberOfBookAtRandom(){
+    
        BookSuggestionSystem.books.add("The Hobbit");
        BookSuggestionSystem.books.add("Animal Farm");
        BookSuggestionSystem.books.add("Things Fall Apart");
@@ -36,13 +37,30 @@ public class BookSuggestionSystemTest{
      public void testThatGetRandomPageGetsTheNumberOfPageAtRandom(){
         for(int count = 1; count < 101; count++){
             int actual = suggest.getRandomPage();
-            assertTrue(actual >= 1 && actual <=100);
+            assertTrue(actual >= 1 && actual <= 100);
             
         }
- 
-        
-      
+    
     }
+    
+        
+     @Test
+     public void testThatAddBookIsAddedSuccessfully(){
+     
+        String title = suggest.addBook(" Think Big");   
+        assertEquals("Book added successfully", title );
+            
+        }
+        
+     @Test
+     public void testThatBookIfBookIs(){
+     
+        String title = suggest.removeBook(" Animal Farm");   
+        assertEquals("Book removed successfully", title );
+            
+        }
+    
+    
 
 
 }

@@ -133,39 +133,40 @@ public class BookSuggestionSystem{
     }
     
     public static int getRandomPage(){
-        return randomNumber.nextInt(101);
+        return randomNumber.nextInt(1, 101);
     }
     
     public static String addBook(String titleBook){
-    
-        if (titleBook.isEmpty()){
-            return "Book title can not be empty! Please enter a book title. ";
-        }
-        if(bookIsthere(titleBook)){
-            return " " + titleBook + " already exist in our system!"; 
-        }
+//    
+//        if (titleBook.isEmpty()){
+//            return "Book title can not be empty! Please enter a book title. ";
+//        }
+//        if(bookIsthere(titleBook)){
+//            return " " + titleBook + " already exist in our system!"; 
+//        }
         books.add(titleBook);
         return  "Book added successfully";
     }
     
     public static String removeBook(String titleBook){
-        if (!bookIsthere(titleBook)){
-            return " " + titleBook + " is not found in our system. ";
-            
-        }
+    
+//        if (!bookIsthere(titleBook)){
+//            return " " + titleBook + " is not found in our system. ";
+//            
+//        }
         books.remove(titleBook);
         return "Book removed successfully";
         
     }
     
     public static String updateBook(String outDatedTitle, String latestTitle){
-        if (!bookIsthere(outDatedTitle)){
-            return "" + outDatedTitle + " is no longer available in our system.";
-        }
-        if(latestTitle.isEmpty()){
-            return "New titel can not be left empty1";
-            
-        }
+//        if (!bookIsthere(outDatedTitle)){
+//            return "" + outDatedTitle + " is no longer available in our system.";
+//        }
+//        if(latestTitle.isEmpty()){
+//            return "New tite can not be left empty1";
+//            
+//        }
         int index = books.indexOf(outDatedTitle);
             books.set(index ,latestTitle );
             return "Book is updated successfully";
