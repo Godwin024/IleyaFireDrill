@@ -53,10 +53,53 @@ public class BookSuggestionSystemTest{
         }
         
      @Test
-     public void testThatBookIfBookIs(){
+     public void testThatBookIfBookIsRemove(){
      
         String title = suggest.removeBook(" Animal Farm");   
         assertEquals("Book removed successfully", title );
+            
+        }
+        
+     @Test
+     public void testThatBookIsUpdatedSuccessfully(){
+     
+        String outDatedTitle = "The Hobbit";
+        String latestTitle = "Figure It Out Yourself My Lad";
+        String actualBook =  "Book is updated successfully";
+        
+        String expectedBook = suggest.updateBook(outDatedTitle, latestTitle);
+     
+        assertEquals(actualBook, expectedBook);
+            
+        }
+        
+     @Test
+     public void testThatBookShowAllBookIAvailable(){
+     
+        String myBooks = suggest.showAllBooks();   
+        assertEquals("Here are all available books in our system. ", myBooks );
+            
+        }
+        
+     @Test
+     public void testThatBookIsThereAndAvalaibleInOurSystem(){
+     
+       
+        assertFalse(suggest.bookIsthere("Brave "));
+            
+        }
+        
+     @Test
+     public void testThatGetBookNumberIsAccurate(){
+     
+        suggest.books.add("The Hobbit");
+        suggest.books.add("The Mystery");
+        suggest.books.add("Animal Farm");
+        suggest.books.add("Brave Kingdom");
+        suggest.books.add("Things Fall Apart");
+     
+       
+        assertEquals(5 ,suggest.getBookNumbers());
             
         }
     

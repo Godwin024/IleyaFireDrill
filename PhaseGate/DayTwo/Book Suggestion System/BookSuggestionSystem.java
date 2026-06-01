@@ -14,11 +14,9 @@ public class BookSuggestionSystem{
         books.add("The Hobbit");
         books.add("The Mystery");
         books.add("Animal Farm");
-        books.add("Brave Kindgdom");
+        books.add("Brave Kingdom");
         books.add("Things Fall Apart");
-        
-    
-        
+          
       //  boolean searchBooks = true;
         
         int myChoice = 0;
@@ -29,7 +27,7 @@ public class BookSuggestionSystem{
         
         System.out.println("WELCOME TO THE BOOK SUGGESTION SYSTEM");
            
-        System.out.println("******************************************");
+        System.out.println("******************************************\n");
      
         System.out.println();
         System.out.println(" 1: Get Suggestions");
@@ -40,7 +38,7 @@ public class BookSuggestionSystem{
         System.out.println(" 6: Quit");
         System.out.println();
         
-        System.out.println("********************************************");
+        System.out.println("********************************************\n");
         
         System.out.println("Enter operation: ");
         
@@ -52,23 +50,18 @@ public class BookSuggestionSystem{
                 String suggestForMe = suggest.suggestBook();
                 // System.out.println(">>>>>>Book to read  for today>>>>>>");
                 System.out.println(suggestForMe);
-
-
                 break;
 
                 case 2: System.out.print("Enter the book title: ");
                 String userInput = input.nextLine().trim();
                 String addTheBook = suggest.addBook(userInput);
                 System.out.println(addTheBook);
-
-
                 break;
 
                 case 3: System.out.println("Enter the book title to remove: ");                        
                 String theBookToremove = input.nextLine().trim();
                 String removeOneBook = suggest.removeBook(theBookToremove);
                 System.out.println(removeOneBook);
-
                 break;
 
                 case 4: System.out.println("Enter the Outdated book to update: ");
@@ -79,35 +72,32 @@ public class BookSuggestionSystem{
 
                 String updateTheBook = suggest.updateBook(outDateBook, theLatestBook);
                 System.out.println(updateTheBook);
-
                 break;
 
-                case 5: System.out.println("Show All Books");
+                case 5: System.out.println("Show All Books\n");
                 String showBooks = suggest.showAllBooks();
                 System.out.println(showBooks);
-
                 break;
 
-                case 6: System.out.println("GoodBye! Glad you enjoyed our reading System.");
-
+                case 6: System.out.println("GoodBye! Glad you enjoyed our reading System.\n");
                 break;
 
                 default:
-                System.out.println("invalid selection. Please enter number from 1-6");
+                System.out.println("invalid selection. Please enter number from 1-6\n");
 
-                } 
+                   } 
             
-                  }    
-       
+             }           
            
     }
     
     public static String suggestBook(){
+    
         if (books.isEmpty()){
             
             return"No books is currently available, Add some. ";
         }
-        String answer = "yes";
+             String answer = "yes";
         while (answer.equals("yes")){
         
             String titleBook = getRandomBook();
@@ -118,12 +108,11 @@ public class BookSuggestionSystem{
             System.out.println (" Page     : " + randomPage);
             
             System.out.println();
-            System.out.println("\n Do you care for another book suggestion? [yes/no]: ");
-            answer = input.nextLine().trim();
-            
+            System.out.println("\n Do you care for another book suggestion? [yes/no]: \n");
+            answer = input.nextLine().trim();           
             
         }
-          return"Enjoy your reading";
+          return"Enjoy your reading\n";
     }
     
     public static  String getRandomBook(){
@@ -133,65 +122,53 @@ public class BookSuggestionSystem{
     }
     
     public static int getRandomPage(){
+    
         return randomNumber.nextInt(1, 101);
     }
     
     public static String addBook(String titleBook){
-//    
-//        if (titleBook.isEmpty()){
-//            return "Book title can not be empty! Please enter a book title. ";
-//        }
-//        if(bookIsthere(titleBook)){
-//            return " " + titleBook + " already exist in our system!"; 
-//        }
+
         books.add(titleBook);
         return  "Book added successfully";
     }
     
     public static String removeBook(String titleBook){
     
-//        if (!bookIsthere(titleBook)){
-//            return " " + titleBook + " is not found in our system. ";
-//            
-//        }
         books.remove(titleBook);
         return "Book removed successfully";
         
     }
     
     public static String updateBook(String outDatedTitle, String latestTitle){
-//        if (!bookIsthere(outDatedTitle)){
-//            return "" + outDatedTitle + " is no longer available in our system.";
-//        }
-//        if(latestTitle.isEmpty()){
-//            return "New tite can not be left empty1";
-//            
-//        }
-        int index = books.indexOf(outDatedTitle);
-            books.set(index ,latestTitle );
-            return "Book is updated successfully";
-    }
-    
-    public static String showAllBooks(){
-        if (books.isEmpty()){
-            
-            return "No books in our system yet.";
+
+        if (!bookIsthere(outDatedTitle)){
+        return "" + outDatedTitle + " is no longer available in our system.";
         }
-        System.out.println("\n All available books in our system");
-            int count = 0;
-            for(; count < books.size(); count++){
-                System.out.println(" " + (count + 1) + " " + books.get(count));
-            }
-              return"Here are all available books in our system. ";
-    }
+
+        if(latestTitle.isEmpty()){
+        return "This can not be left empty";
+
+        }
+        int index = books.indexOf(outDatedTitle);
+        books.set(index , latestTitle );
+        return "Book is updated successfully";
+        }
+
+    public static String showAllBooks(){
+
+        int count = 0;
+        for(; count < books.size(); count++){
+        System.out.println(" " + (count + 1) + " " + books.get(count));
+        }
+        return"\nHere are all available books in our system.\n ";
+        }
     
     public static boolean bookIsthere(String bookTitle){
-    return books.contains(bookTitle);
+        return books.contains(bookTitle);
     }
     
     public static int getBookNumbers(){
         return books.size();
     }
     
-
 }
